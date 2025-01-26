@@ -13,7 +13,8 @@ setup(
     packages=find_packages(),
     package_data={
         "gnparser": [
-            "libgnparser.dylib"
+            "libgnparser.dylib",
+            "libgnparser.so"
         ]
     },
     python_requires=">=3.6"
