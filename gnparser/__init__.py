@@ -14,6 +14,8 @@ def load_library():
     else:
         raise RuntimeError(f"Unsupported platform: {system}")
     lib_path = os.path.join(os.path.dirname(__file__), lib_name)
+    print(lib_path)
+    print(os.path.exists(lib_path))
     return ctypes.CDLL(lib_path)
 
 
@@ -33,5 +35,5 @@ def parse_to_string(name, fmt_str="compact", code_str=None, details=True, diaere
         diaereses
     )
     parsed = ctypes.string_at(result).decode("utf-8")
-    lib.FreeMemory(result)
+    # lib.FreeMemory(result)
     return parsed
