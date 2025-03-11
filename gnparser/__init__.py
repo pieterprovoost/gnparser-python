@@ -18,8 +18,8 @@ def load_library():
     else:
         raise RuntimeError(f"Unsupported platform: {system}")
     lib_path = os.path.join(os.path.dirname(__file__), lib_name)
-    logger.info(lib_path)
-    logger.info(os.path.exists(lib_path))
+    if not os.path.exists(lib_path):
+        raise RuntimeError(f"Path does not exist: {lib_path}")
     return ctypes.CDLL(lib_path)
 
 
