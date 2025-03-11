@@ -4,6 +4,9 @@ import ctypes
 import logging
 
 
+logger = logging.getLogger(__name__)
+
+
 def load_library():
     system = platform.system().lower()
     if system == "linux":
@@ -15,8 +18,8 @@ def load_library():
     else:
         raise RuntimeError(f"Unsupported platform: {system}")
     lib_path = os.path.join(os.path.dirname(__file__), lib_name)
-    logging.info(lib_path)
-    logging.info(os.path.exists(lib_path))
+    logger.info(lib_path)
+    logger.info(os.path.exists(lib_path))
     return ctypes.CDLL(lib_path)
 
 
